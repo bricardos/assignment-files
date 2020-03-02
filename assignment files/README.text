@@ -1,0 +1,6 @@
+###i choose programming languange robot framework
+### step reproduce:
+####1. copy path api.robot and paste at compareAPI.robot (in ***setting***) example: /Users/cicil/automation-test-suites/assignment files/Ricardo/resource/api.robot
+####2. run in folder assignment files/Ricardo
+####3. run with console and syntax is (robot -t "001 - Gojek" compareAPI.robot or robot compareAPI.robot)
+© 2020 GitHub, Inc.
