@@ -65,12 +65,4 @@ Resource          /Users/cicil/automation-test-suites/assignment files/Ricardo/r
     Should Not Be Equal    ${data7}    ${data5}   not equal42
     Should Not Be Equal    ${data7}    ${data6}   not equal43
     Should Be Equal        ${data7}    ${data7}   equal7
-
-
-
-    Log To Console    >>> success equal
-    Log To Console    >>> success not equal1
-    Log To Console    >>> success not equal2
-    Log To Console    >>> success not equal3
-    Log To Console    >>> success not equal4
-    Log To Console    >>> success not equal5
+    
