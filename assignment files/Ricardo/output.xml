@@ -1,0 +1,1142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20200302 12:51:03.959" generator="Robot 3.1.2 (Python 2.7.15 on darwin)">
+<suite source="/Users/cicil/automation-test-suites/assignment files/Ricardo/compareAPI.robot" id="s1" name="compareAPI">
+<test id="s1-t1" name="001 - Gojek">
+<kw name="01 - users/3" library="api">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>https://reqres.in</arg>
+</arguments>
+<msg timestamp="20200302 12:51:04.230" level="INFO">Creating Session using : alias=acceptor, url=https://reqres.in, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20200302 12:51:04.231" starttime="20200302 12:51:04.230"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>api/users/3</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200302 12:51:04.850" level="INFO">Get Request using : alias=acceptor, uri=api/users/3, headers=None json=None</msg>
+<msg timestamp="20200302 12:51:04.850" level="INFO">/usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning)</msg>
+<msg timestamp="20200302 12:51:04.850" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:04.850" starttime="20200302 12:51:04.231"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:04.851" starttime="20200302 12:51:04.851"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200302 12:51:04.852" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:04.852" starttime="20200302 12:51:04.852"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:04.853" starttime="20200302 12:51:04.852"></status>
+</kw>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
+<arguments>
+<arg>${response.content}</arg>
+<arg>/data</arg>
+</arguments>
+<assign>
+<var>${data_api}</var>
+</assign>
+<msg timestamp="20200302 12:51:04.854" level="INFO">${data_api} = {"first_name": "Emma", "last_name": "Wong", "id": 3, "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg", "email": "emma.wong@reqres.in"}</msg>
+<status status="PASS" endtime="20200302 12:51:04.854" starttime="20200302 12:51:04.853"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${data_api}'.replace('"','')</arg>
+</arguments>
+<assign>
+<var>${data1}</var>
+</assign>
+<msg timestamp="20200302 12:51:04.854" level="INFO">${data1} = {first_name: Emma, last_name: Wong, id: 3, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg, email: emma.wong@reqres.in}</msg>
+<status status="PASS" endtime="20200302 12:51:04.854" starttime="20200302 12:51:04.854"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${data1}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:04.855" starttime="20200302 12:51:04.855"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${data1}</arg>
+</arguments>
+<msg timestamp="20200302 12:51:04.855" level="INFO">${data1} = {first_name: Emma, last_name: Wong, id: 3, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg, email: emma.wong@reqres.in}</msg>
+<status status="PASS" endtime="20200302 12:51:04.856" starttime="20200302 12:51:04.855"></status>
+</kw>
+<status status="PASS" endtime="20200302 12:51:04.856" starttime="20200302 12:51:04.230"></status>
+</kw>
+<kw name="02 - users/2" library="api">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>https://reqres.in</arg>
+</arguments>
+<msg timestamp="20200302 12:51:04.856" level="INFO">Creating Session using : alias=acceptor, url=https://reqres.in, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20200302 12:51:04.857" starttime="20200302 12:51:04.856"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>api/users/2</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200302 12:51:05.082" level="INFO">Get Request using : alias=acceptor, uri=api/users/2, headers=None json=None</msg>
+<msg timestamp="20200302 12:51:05.082" level="INFO">/usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning)</msg>
+<msg timestamp="20200302 12:51:05.082" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:05.082" starttime="20200302 12:51:04.857"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:05.083" starttime="20200302 12:51:05.082"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200302 12:51:05.084" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:05.084" starttime="20200302 12:51:05.083"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:05.085" starttime="20200302 12:51:05.084"></status>
+</kw>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
+<arguments>
+<arg>${response.content}</arg>
+<arg>/data</arg>
+</arguments>
+<assign>
+<var>${data_api}</var>
+</assign>
+<msg timestamp="20200302 12:51:05.085" level="INFO">${data_api} = {"first_name": "Janet", "last_name": "Weaver", "id": 2, "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg", "email": "janet.weaver@reqres.in"}</msg>
+<status status="PASS" endtime="20200302 12:51:05.086" starttime="20200302 12:51:05.085"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${data_api}'.replace('"','')</arg>
+</arguments>
+<assign>
+<var>${data2}</var>
+</assign>
+<msg timestamp="20200302 12:51:05.086" level="INFO">${data2} = {first_name: Janet, last_name: Weaver, id: 2, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg, email: janet.weaver@reqres.in}</msg>
+<status status="PASS" endtime="20200302 12:51:05.086" starttime="20200302 12:51:05.086"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${data2}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:05.087" starttime="20200302 12:51:05.086"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${data2}</arg>
+</arguments>
+<msg timestamp="20200302 12:51:05.087" level="INFO">${data2} = {first_name: Janet, last_name: Weaver, id: 2, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg, email: janet.weaver@reqres.in}</msg>
+<status status="PASS" endtime="20200302 12:51:05.087" starttime="20200302 12:51:05.087"></status>
+</kw>
+<status status="PASS" endtime="20200302 12:51:05.087" starttime="20200302 12:51:04.856"></status>
+</kw>
+<kw name="03 - users/1" library="api">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>https://reqres.in</arg>
+</arguments>
+<msg timestamp="20200302 12:51:05.088" level="INFO">Creating Session using : alias=acceptor, url=https://reqres.in, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20200302 12:51:05.090" starttime="20200302 12:51:05.088"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>api/users/1</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200302 12:51:05.652" level="INFO">Get Request using : alias=acceptor, uri=api/users/1, headers=None json=None</msg>
+<msg timestamp="20200302 12:51:05.652" level="INFO">/usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning)</msg>
+<msg timestamp="20200302 12:51:05.653" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:05.653" starttime="20200302 12:51:05.090"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:05.654" starttime="20200302 12:51:05.653"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200302 12:51:05.655" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:05.655" starttime="20200302 12:51:05.654"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:05.655" starttime="20200302 12:51:05.655"></status>
+</kw>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
+<arguments>
+<arg>${response.content}</arg>
+<arg>/data</arg>
+</arguments>
+<assign>
+<var>${data_api}</var>
+</assign>
+<msg timestamp="20200302 12:51:05.656" level="INFO">${data_api} = {"first_name": "George", "last_name": "Bluth", "id": 1, "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg", "email": "george.bluth@reqres.in"}</msg>
+<status status="PASS" endtime="20200302 12:51:05.656" starttime="20200302 12:51:05.656"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${data_api}'.replace('"','')</arg>
+</arguments>
+<assign>
+<var>${data3}</var>
+</assign>
+<msg timestamp="20200302 12:51:05.657" level="INFO">${data3} = {first_name: George, last_name: Bluth, id: 1, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg, email: george.bluth@reqres.in}</msg>
+<status status="PASS" endtime="20200302 12:51:05.657" starttime="20200302 12:51:05.656"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${data3}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:05.657" starttime="20200302 12:51:05.657"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${data3}</arg>
+</arguments>
+<msg timestamp="20200302 12:51:05.658" level="INFO">${data3} = {first_name: George, last_name: Bluth, id: 1, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg, email: george.bluth@reqres.in}</msg>
+<status status="PASS" endtime="20200302 12:51:05.658" starttime="20200302 12:51:05.657"></status>
+</kw>
+<status status="PASS" endtime="20200302 12:51:05.658" starttime="20200302 12:51:05.088"></status>
+</kw>
+<kw name="04 - api/users?page=3" library="api">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>https://reqres.in</arg>
+</arguments>
+<msg timestamp="20200302 12:51:05.659" level="INFO">Creating Session using : alias=acceptor, url=https://reqres.in, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20200302 12:51:05.659" starttime="20200302 12:51:05.658"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>api/users?page=3</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200302 12:51:05.893" level="INFO">Get Request using : alias=acceptor, uri=api/users?page=3, headers=None json=None</msg>
+<msg timestamp="20200302 12:51:05.894" level="INFO">/usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning)</msg>
+<msg timestamp="20200302 12:51:05.894" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:05.894" starttime="20200302 12:51:05.659"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:05.895" starttime="20200302 12:51:05.894"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200302 12:51:05.896" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:05.896" starttime="20200302 12:51:05.895"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:05.897" starttime="20200302 12:51:05.896"></status>
+</kw>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
+<arguments>
+<arg>${response.content}</arg>
+<arg>/data</arg>
+</arguments>
+<assign>
+<var>${data_api}</var>
+</assign>
+<msg timestamp="20200302 12:51:05.898" level="INFO">${data_api} = []</msg>
+<status status="PASS" endtime="20200302 12:51:05.898" starttime="20200302 12:51:05.897"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${data_api}'.replace('"','')</arg>
+</arguments>
+<assign>
+<var>${data4}</var>
+</assign>
+<msg timestamp="20200302 12:51:05.898" level="INFO">${data4} = []</msg>
+<status status="PASS" endtime="20200302 12:51:05.898" starttime="20200302 12:51:05.898"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${data4}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:05.899" starttime="20200302 12:51:05.898"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${data4}</arg>
+</arguments>
+<msg timestamp="20200302 12:51:05.899" level="INFO">${data4} = []</msg>
+<status status="PASS" endtime="20200302 12:51:05.899" starttime="20200302 12:51:05.899"></status>
+</kw>
+<status status="PASS" endtime="20200302 12:51:05.899" starttime="20200302 12:51:05.658"></status>
+</kw>
+<kw name="05 - api/unknown/2" library="api">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>https://reqres.in</arg>
+</arguments>
+<msg timestamp="20200302 12:51:05.900" level="INFO">Creating Session using : alias=acceptor, url=https://reqres.in, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20200302 12:51:05.901" starttime="20200302 12:51:05.900"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>api/unknown/2</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200302 12:51:06.113" level="INFO">Get Request using : alias=acceptor, uri=api/unknown/2, headers=None json=None</msg>
+<msg timestamp="20200302 12:51:06.113" level="INFO">/usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning)</msg>
+<msg timestamp="20200302 12:51:06.113" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:06.114" starttime="20200302 12:51:05.901"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.115" starttime="20200302 12:51:06.114"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200302 12:51:06.116" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:06.116" starttime="20200302 12:51:06.115"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.117" starttime="20200302 12:51:06.116"></status>
+</kw>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
+<arguments>
+<arg>${response.content}</arg>
+<arg>/data</arg>
+</arguments>
+<assign>
+<var>${data_api}</var>
+</assign>
+<msg timestamp="20200302 12:51:06.117" level="INFO">${data_api} = {"color": "#C74375", "pantone_value": "17-2031", "year": 2001, "id": 2, "name": "fuchsia rose"}</msg>
+<status status="PASS" endtime="20200302 12:51:06.117" starttime="20200302 12:51:06.117"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${data_api}'.replace('"','')</arg>
+</arguments>
+<assign>
+<var>${data5}</var>
+</assign>
+<msg timestamp="20200302 12:51:06.118" level="INFO">${data5} = {color: #C74375, pantone_value: 17-2031, year: 2001, id: 2, name: fuchsia rose}</msg>
+<status status="PASS" endtime="20200302 12:51:06.118" starttime="20200302 12:51:06.117"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${data5}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.118" starttime="20200302 12:51:06.118"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${data5}</arg>
+</arguments>
+<msg timestamp="20200302 12:51:06.119" level="INFO">${data5} = {color: #C74375, pantone_value: 17-2031, year: 2001, id: 2, name: fuchsia rose}</msg>
+<status status="PASS" endtime="20200302 12:51:06.119" starttime="20200302 12:51:06.118"></status>
+</kw>
+<status status="PASS" endtime="20200302 12:51:06.119" starttime="20200302 12:51:05.900"></status>
+</kw>
+<kw name="06 - api/users?page=2" library="api">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>https://reqres.in</arg>
+</arguments>
+<msg timestamp="20200302 12:51:06.120" level="INFO">Creating Session using : alias=acceptor, url=https://reqres.in, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20200302 12:51:06.120" starttime="20200302 12:51:06.119"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>api/users?page=2</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200302 12:51:06.366" level="INFO">Get Request using : alias=acceptor, uri=api/users?page=2, headers=None json=None</msg>
+<msg timestamp="20200302 12:51:06.366" level="INFO">/usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning)</msg>
+<msg timestamp="20200302 12:51:06.366" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:06.366" starttime="20200302 12:51:06.120"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.367" starttime="20200302 12:51:06.367"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200302 12:51:06.368" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:06.368" starttime="20200302 12:51:06.368"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.369" starttime="20200302 12:51:06.368"></status>
+</kw>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
+<arguments>
+<arg>${response.content}</arg>
+<arg>/data</arg>
+</arguments>
+<assign>
+<var>${data_api}</var>
+</assign>
+<msg timestamp="20200302 12:51:06.370" level="INFO">${data_api} = [{"first_name": "Michael", "last_name": "Lawson", "id": 7, "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/follettkyle/128.jpg", "email": "michael.lawson@reqres.in"}, {"first_name": "Lindsay...</msg>
+<status status="PASS" endtime="20200302 12:51:06.370" starttime="20200302 12:51:06.369"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${data_api}'.replace('"','')</arg>
+</arguments>
+<assign>
+<var>${data6}</var>
+</assign>
+<msg timestamp="20200302 12:51:06.371" level="INFO">${data6} = [{first_name: Michael, last_name: Lawson, id: 7, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/follettkyle/128.jpg, email: michael.lawson@reqres.in}, {first_name: Lindsay, last_name: Ferguson...</msg>
+<status status="PASS" endtime="20200302 12:51:06.371" starttime="20200302 12:51:06.370"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${data6}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.371" starttime="20200302 12:51:06.371"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${data6}</arg>
+</arguments>
+<msg timestamp="20200302 12:51:06.372" level="INFO">${data6} = [{first_name: Michael, last_name: Lawson, id: 7, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/follettkyle/128.jpg, email: michael.lawson@reqres.in}, {first_name: Lindsay, last_name: Ferguson...</msg>
+<status status="PASS" endtime="20200302 12:51:06.372" starttime="20200302 12:51:06.371"></status>
+</kw>
+<status status="PASS" endtime="20200302 12:51:06.372" starttime="20200302 12:51:06.119"></status>
+</kw>
+<kw name="07 - api/users?page=1" library="api">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>https://reqres.in</arg>
+</arguments>
+<msg timestamp="20200302 12:51:06.373" level="INFO">Creating Session using : alias=acceptor, url=https://reqres.in, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20200302 12:51:06.373" starttime="20200302 12:51:06.372"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>acceptor</arg>
+<arg>api/users?page=1</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200302 12:51:06.934" level="INFO">Get Request using : alias=acceptor, uri=api/users?page=1, headers=None json=None</msg>
+<msg timestamp="20200302 12:51:06.935" level="INFO">/usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning)</msg>
+<msg timestamp="20200302 12:51:06.935" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:06.935" starttime="20200302 12:51:06.373"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.936" starttime="20200302 12:51:06.935"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200302 12:51:06.937" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20200302 12:51:06.937" starttime="20200302 12:51:06.936"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.938" starttime="20200302 12:51:06.937"></status>
+</kw>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
+<arguments>
+<arg>${response.content}</arg>
+<arg>/data</arg>
+</arguments>
+<assign>
+<var>${data_api}</var>
+</assign>
+<msg timestamp="20200302 12:51:06.939" level="INFO">${data_api} = [{"first_name": "George", "last_name": "Bluth", "id": 1, "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg", "email": "george.bluth@reqres.in"}, {"first_name": "Janet", "las...</msg>
+<status status="PASS" endtime="20200302 12:51:06.939" starttime="20200302 12:51:06.938"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${data_api}'.replace('"','')</arg>
+</arguments>
+<assign>
+<var>${data7}</var>
+</assign>
+<msg timestamp="20200302 12:51:06.940" level="INFO">${data7} = [{first_name: George, last_name: Bluth, id: 1, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg, email: george.bluth@reqres.in}, {first_name: Janet, last_name: Weaver, id: 2, ...</msg>
+<status status="PASS" endtime="20200302 12:51:06.940" starttime="20200302 12:51:06.939"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${data7}</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.940" starttime="20200302 12:51:06.940"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${data7}</arg>
+</arguments>
+<msg timestamp="20200302 12:51:06.941" level="INFO">${data7} = [{first_name: George, last_name: Bluth, id: 1, avatar: https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg, email: george.bluth@reqres.in}, {first_name: Janet, last_name: Weaver, id: 2, ...</msg>
+<status status="PASS" endtime="20200302 12:51:06.941" starttime="20200302 12:51:06.940"></status>
+</kw>
+<status status="PASS" endtime="20200302 12:51:06.941" starttime="20200302 12:51:06.372"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${data1}</arg>
+<arg>equal1</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.941" starttime="20200302 12:51:06.941"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${data2}</arg>
+<arg>not equal1</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.942" starttime="20200302 12:51:06.942"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${data3}</arg>
+<arg>not equal2</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.943" starttime="20200302 12:51:06.942"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${data4}</arg>
+<arg>not equal3</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.943" starttime="20200302 12:51:06.943"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${data5}</arg>
+<arg>not equal4</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.944" starttime="20200302 12:51:06.944"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${data6}</arg>
+<arg>not equal5</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.945" starttime="20200302 12:51:06.944"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${data7}</arg>
+<arg>not equal6</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.945" starttime="20200302 12:51:06.945"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${data1}</arg>
+<arg>not equal7</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.946" starttime="20200302 12:51:06.946"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${data2}</arg>
+<arg>equal2</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.947" starttime="20200302 12:51:06.946"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${data3}</arg>
+<arg>not equal8</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.947" starttime="20200302 12:51:06.947"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${data4}</arg>
+<arg>not equal9</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.948" starttime="20200302 12:51:06.947"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${data5}</arg>
+<arg>not equal10</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.948" starttime="20200302 12:51:06.948"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${data6}</arg>
+<arg>not equal11</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.949" starttime="20200302 12:51:06.949"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${data7}</arg>
+<arg>not equal12</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.950" starttime="20200302 12:51:06.949"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${data1}</arg>
+<arg>not equal13</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.950" starttime="20200302 12:51:06.950"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${data2}</arg>
+<arg>not equal14</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.951" starttime="20200302 12:51:06.950"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${data3}</arg>
+<arg>equal3</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.951" starttime="20200302 12:51:06.951"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${data4}</arg>
+<arg>not equal16</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.952" starttime="20200302 12:51:06.952"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${data5}</arg>
+<arg>not equal17</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.952" starttime="20200302 12:51:06.952"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${data6}</arg>
+<arg>not equal18</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.953" starttime="20200302 12:51:06.953"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${data7}</arg>
+<arg>not equal19</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.954" starttime="20200302 12:51:06.953"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data4}</arg>
+<arg>${data1}</arg>
+<arg>not equal20</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.954" starttime="20200302 12:51:06.954"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data4}</arg>
+<arg>${data2}</arg>
+<arg>not equal21</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.955" starttime="20200302 12:51:06.955"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data4}</arg>
+<arg>${data3}</arg>
+<arg>not equal22</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.956" starttime="20200302 12:51:06.955"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${data4}</arg>
+<arg>${data4}</arg>
+<arg>equal4</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.956" starttime="20200302 12:51:06.956"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data4}</arg>
+<arg>${data5}</arg>
+<arg>not equal23</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.957" starttime="20200302 12:51:06.957"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data4}</arg>
+<arg>${data6}</arg>
+<arg>not equal24</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.958" starttime="20200302 12:51:06.957"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data4}</arg>
+<arg>${data7}</arg>
+<arg>not equal25</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.958" starttime="20200302 12:51:06.958"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data5}</arg>
+<arg>${data1}</arg>
+<arg>not equal26</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.959" starttime="20200302 12:51:06.958"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data5}</arg>
+<arg>${data2}</arg>
+<arg>not equal27</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.959" starttime="20200302 12:51:06.959"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data5}</arg>
+<arg>${data3}</arg>
+<arg>not equal28</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.960" starttime="20200302 12:51:06.960"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data5}</arg>
+<arg>${data4}</arg>
+<arg>not equal29</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.961" starttime="20200302 12:51:06.960"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${data5}</arg>
+<arg>${data5}</arg>
+<arg>equal5</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.961" starttime="20200302 12:51:06.961"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data5}</arg>
+<arg>${data6}</arg>
+<arg>not equal30</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.962" starttime="20200302 12:51:06.961"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data5}</arg>
+<arg>${data7}</arg>
+<arg>not equal31</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.962" starttime="20200302 12:51:06.962"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data6}</arg>
+<arg>${data1}</arg>
+<arg>not equal32</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.963" starttime="20200302 12:51:06.963"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data6}</arg>
+<arg>${data2}</arg>
+<arg>not equal33</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.964" starttime="20200302 12:51:06.963"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data6}</arg>
+<arg>${data3}</arg>
+<arg>not equal34</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.964" starttime="20200302 12:51:06.964"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data6}</arg>
+<arg>${data4}</arg>
+<arg>not equal35</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.965" starttime="20200302 12:51:06.964"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data6}</arg>
+<arg>${data5}</arg>
+<arg>not equal36</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.965" starttime="20200302 12:51:06.965"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${data6}</arg>
+<arg>${data6}</arg>
+<arg>equal6</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.966" starttime="20200302 12:51:06.965"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data6}</arg>
+<arg>${data7}</arg>
+<arg>not equal37</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.966" starttime="20200302 12:51:06.966"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data7}</arg>
+<arg>${data1}</arg>
+<arg>not equal38</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.967" starttime="20200302 12:51:06.967"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data7}</arg>
+<arg>${data2}</arg>
+<arg>not equal39</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.968" starttime="20200302 12:51:06.967"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data7}</arg>
+<arg>${data3}</arg>
+<arg>not equal40</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.968" starttime="20200302 12:51:06.968"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data7}</arg>
+<arg>${data4}</arg>
+<arg>not equal41</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.969" starttime="20200302 12:51:06.968"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data7}</arg>
+<arg>${data5}</arg>
+<arg>not equal42</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.970" starttime="20200302 12:51:06.969"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${data7}</arg>
+<arg>${data6}</arg>
+<arg>not equal43</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.970" starttime="20200302 12:51:06.970"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${data7}</arg>
+<arg>${data7}</arg>
+<arg>equal7</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.971" starttime="20200302 12:51:06.971"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; success equal</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.972" starttime="20200302 12:51:06.971"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; success not equal1</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.972" starttime="20200302 12:51:06.972"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; success not equal2</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.974" starttime="20200302 12:51:06.973"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; success not equal3</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.974" starttime="20200302 12:51:06.974"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; success not equal4</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.975" starttime="20200302 12:51:06.974"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; success not equal5</arg>
+</arguments>
+<status status="PASS" endtime="20200302 12:51:06.975" starttime="20200302 12:51:06.975"></status>
+</kw>
+<status status="PASS" endtime="20200302 12:51:06.975" critical="yes" starttime="20200302 12:51:04.229"></status>
+</test>
+<status status="PASS" endtime="20200302 12:51:06.976" starttime="20200302 12:51:03.961"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="compareAPI" pass="1">compareAPI</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
